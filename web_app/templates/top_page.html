@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('web_app.polarity_analysis')}}" method="post" >
+  <label for="sentence">フォームに文章を入力して送信ボタンを押してください。</label>
+  {% if status == -1 %}
+  <br />
+  <label for="warning"><span style="color:#FF0000">140語以下で入力してください</span></label>  
+  {% endif %}
+  <br />
+  {% if origin %}
+  <textarea type="text" class="form-control" id="sentence" name="sentence">{{ origin }}</textarea>
+  {% else %}
+  <textarea type="text" class="form-control" id="sentence" name="sentence" placeholder="文章を入力してください"></textarea>
+  {% endif %}
+  <br />
+  <button type="submit" class="btn btn-default">送信</button>
+</form>
+<div class="result">
+  {% if polarity == 1 %}
+    <h3>ポジティブ度：{{ result }}% </h3>
+    <h3>ポジティブ！</h3>
+    <p>
+      <img src="/static/images/smile_beer.jpg " width="400" height="250" alt="飲もうぜ">
+    </p>
+  {% elif polarity == 0 %}
+    <h3>ポジティブ度：{{ result }}% </h3>
+    <h3>ネガティブ・・・</h3>
+    <p>
+      <img src="/static/images/nega_two.png" width="331" height="200" alt="バーカ">
+    </p>
+  {% elif polarity == -1 %}
+    <h3> 判定できませんでした。。。</h3>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+@font-face{
+  font-family: 'light_novel';
+  src: local(LightNovelPOP);
+}
+
+body    {font-family: ligiht_novel; background-color: #eee; text-align:center;}
+label   {display: inline-block; margin:10px;}
+h4      {font-family: sans-serif; margin: 10px;}
+textarea{display:inline-block; width: 500px; height:20em; margin:10px;}
